@@ -59,6 +59,7 @@ def main():
 
             # creating the wall object
             wall = Wall.Wall(wall_height, wall_length)
+            room.add_wall(wall)
 
             # user inputs number of wall objects
             num_wall_obj = get_int("Enter number of wall objects on wall " + str(j+1) + " (windows, doors etc.): ")
@@ -94,12 +95,13 @@ def main():
         for room in rooms:
             for wall in room.get_walls():
                 paint_needed = (wall.get_paint_area() / painted_wall_per_litre) * wall.get_coats()
+                total_paint += paint_needed
+                print(str(round(paint_needed, 3)) + " litres of " + wall.get_paint().get_colour() + " paint.")
                 paint_cost = paint_needed * wall.get_paint().get_cost()
                 total_cost += paint_cost
 
-        # print(round(wall.area, 3))
-        # print(round(wall.get_paint_area(), 3))
-        print("Paint needed (litres): " + str(round(paint_needed, 3)))
+        print("Total Paint needed (litres): " + str(round(total_paint, 3)))
+        print("Total Price: £" + str(round(total_cost,2)))
     else:
         pass
 
