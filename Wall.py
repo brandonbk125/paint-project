@@ -15,6 +15,6 @@ class Wall:
     def get_paint_area(self):
         total_obstruction = 0
         for obj in self._wall_objs:
-            total_obstruction += obj.area
+            total_obstruction += obj._area
 
         return self._area - total_obstruction
