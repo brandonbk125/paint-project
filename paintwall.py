@@ -1,44 +1,21 @@
+import Wall
+import WallObject
+
+
 def calc_area(height: float, length: float):
     return height*length
 
 
-class WallObject:
-    def __init__(self, height: float, length: float):
-        self.height = height
-        self.length = length
-        self.area = calc_area(height, length)
+def get_int(user_prompt: str):
+    return int(input(user_prompt))
 
 
-class Wall:
-    def __init__(self, height: float, length: float):
-        self.height = height
-        self.length = length
-        self.area = calc_area(height, length)
-        self.wall_objs = []
-
-    def add_wall_obj(self, wall_object: WallObject):
-        self.wall_objs.append(wall_object)
-
-    def get_paint_area(self):
-        total_obstruction = 0
-        for obj in self.wall_objs:
-            total_obstruction += obj.area
-
-        return self.area - total_obstruction
+def get_float(user_prompt: str):
+    return float(input(user_prompt))
 
 
-class Room:
-    def __init__(self, num_walls):
-        self.walls = []
-
-    def add_wall(self, wall: Wall):
-        self.walls.append(wall)
-
-
-class Paint:
-    def __init__(self, colour : str, cost_per_litre: float):
-        self.colour = colour
-        self.cost_per_litre = cost_per_litre
+def input_error():
+    print("Invalid Input")
 
 
 def main():
@@ -48,20 +25,59 @@ def main():
     painted_wall_per_litre = 6.0
 
     # user inputs wall dimensions
-    wall_height = float(input("Enter wall height (m): "))
-    wall_length = float(input("Enter wall length (m): "))
-    num_wall_obj = int(input("Enter number of wall objects (windows, doors etc.): "))
+    valid = False
+    while not valid:
+        try:
+            wall_height = get_float("Enter wall height (m): ")
+            valid = True
+        except ValueError:
+            input_error()
+
+    valid = False
+    while not valid:
+        try:
+            wall_length = get_float("Enter wall length (m): ")
+            valid = True
+        except ValueError:
+            input_error()
+
+    valid = False
+    while not valid:
+        try:
+            num_wall_obj = get_int("Enter number of wall objects (windows, doors etc.): ")
+            valid = True
+        except ValueError:
+            input_error()
 
     # creating the wall object
-    wall = Wall(wall_height, wall_length)
+    wall = Wall.Wall(wall_height, wall_length)
 
     for _ in range(num_wall_obj):
-        object_height = float(input("Enter object height (m): "))
-        object_length = float(input("Enter object length (m): "))
-        wall_obj = WallObject(object_height, object_length)
+        valid = False
+        while not valid:
+            try:
+                object_height = get_float("Enter object height (m): ")
+                valid = True
+            except ValueError:
+                input_error()
+
+        valid = False
+        while not valid:
+            try:
+                object_length = get_float("Enter object length (m): ")
+                valid = True
+            except ValueError:
+                input_error()
+        wall_obj = WallObject.WallObject(object_height, object_length)
         wall.add_wall_obj(wall_obj)
 
-    coats = int(input("Enter number of coats needed: "))
+    valid = False
+    while not valid:
+        try:
+            coats = get_int("Enter number of coats needed: ")
+            valid = True
+        except ValueError:
+            input_error()
 
     paint_needed = (wall.get_paint_area() / painted_wall_per_litre) * coats
     # print(round(wall.area, 3))
