@@ -8,3 +8,8 @@ class Room:
     def add_wall(self, wall: Wall):
         self._walls.append(wall)
 
+    def get_walls(self):
+        return self._walls
+
+
+

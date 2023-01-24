@@ -6,3 +6,6 @@ class WallObject:
         self._height = height
         self._length = length
         self._area = calc_area(height, length)
+
+    def get_area(self):
+        return self._area
