@@ -58,13 +58,15 @@ def main():
     for _ in range(num_wall_obj):
         object_height = float(input("Enter object height (m): "))
         object_length = float(input("Enter object length (m): "))
-        wallobj = WallObject(object_height, object_length)
-        wall.add_wall_obj(wallobj)
+        wall_obj = WallObject(object_height, object_length)
+        wall.add_wall_obj(wall_obj)
 
     coats = int(input("Enter number of coats needed: "))
 
-    paint_needed = (wall.area / painted_wall_per_litre) * coats
+    paint_needed = (wall.get_paint_area() / painted_wall_per_litre) * coats
     # print(round(wall.area, 3))
+    # print(round(wall.get_paint_area(), 3))
+
     print("Paint needed (litres): " + str(round(paint_needed, 3)))
 
 
