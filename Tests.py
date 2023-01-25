@@ -2,6 +2,7 @@ import unittest
 import Wall
 import WallObject
 import Room
+import Paint
 import paintwall
 
 
@@ -29,6 +30,16 @@ class MyTestCase(unittest.TestCase):
 
         wall.add_wall_obj(wall_obj)
         self.assertEqual(wall.get_paint_area(), 96)
+
+    def test_paint_cost(self):
+        paint = Paint.Paint("Red", 4.50)
+
+        self.assertEqual(paint.get_cost(), 4.50)
+
+    def test_paint_colour(self):
+        paint = Paint.Paint("Red", 4.50)
+
+        self.assertEqual(paint.get_colour(), "Red")
 
 
 if __name__ == '__main__':
