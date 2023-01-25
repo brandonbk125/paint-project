@@ -2,6 +2,7 @@ import Wall
 import WallObject
 import Paint
 import Room
+import Shape
 
 
 # calculate area of a rectangular object (A = h*l)
@@ -38,6 +39,29 @@ def get_str(user_prompt: str):
     return input(user_prompt)
 
 
+def get_shape(user_prompt: str):
+    valid = False
+    shape = None
+    while not valid:
+        try:
+            user_input = int(input("What is the shape of the " + user_prompt + "? (1: Rectangle, 2: Circle, 3: "
+                                                                               "Triangle): "))
+            if user_input < 1 or user_input > 3:
+                raise ValueError
+            else:
+                valid = True
+                match user_input:
+                    case 1:
+                        shape = Shape.Rectangle()
+                    case 2:
+                        shape = Shape.Circle()
+                    case 3:
+                        shape = Shape.Triangle()
+                return shape
+        except ValueError:
+            input_error()
+
+
 def input_error():
     print("Invalid Input")
 
@@ -62,11 +86,11 @@ def main():
         # for each wall
         for j in range(num_walls):
             # user inputs wall dimensions
-            wall_height = get_float("Enter height of wall " + str(j+1) + " (m): ")
-            wall_length = get_float("Enter length of wall " + str(j+1) + " (m): ")
+            wall_shape = get_shape("wall")
+            wall_shape.set_dimensions()
 
             # creating the wall object
-            wall = Wall.Wall(wall_height, wall_length)
+            wall = Wall.Wall(wall_shape)
             room.add_wall(wall)
 
             # user inputs number of wall objects
@@ -75,11 +99,10 @@ def main():
             # for each wall object
             for k in range(num_wall_obj):
                 # user inputs dimensions of wall objects
-                object_height = get_float("Enter object " + str(k+1) + " height (m): ")
-                object_length = get_float("Enter object " + str(k+1) + " length (m): ")
-
+                wall_object_shape = get_shape("wall object")
+                wall_object_shape.set_dimensions()
                 # adding wall objects to the wall
-                wall_obj = WallObject.WallObject(object_height, object_length)
+                wall_obj = WallObject.WallObject(wall_object_shape)
                 wall.add_wall_obj(wall_obj)
 
             # get paint

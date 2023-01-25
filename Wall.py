@@ -1,15 +1,15 @@
 import WallObject
 import Paint
 from paintwall import calc_area
+import Shape
 
 
 # the Wall class holds information on a Wall a user wishes to paint
 class Wall:
-    def __init__(self, height: float, length: float):
+    def __init__(self, shape: Shape):
+        self._shape = shape
         self._paint = None
-        self._height = height
-        self._length = length
-        self._area = calc_area(height, length)
+        self._area = shape.get_area()
         self._wall_objs = []
         self._coats = 0
 
