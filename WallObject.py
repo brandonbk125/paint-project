@@ -1,4 +1,3 @@
-from paintwall import calc_area
 import Shape
 
 

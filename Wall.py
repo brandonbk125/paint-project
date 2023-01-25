@@ -1,6 +1,5 @@
 import WallObject
 import Paint
-from paintwall import calc_area
 import Shape
 
 

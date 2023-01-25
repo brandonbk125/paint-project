@@ -6,8 +6,8 @@ import Shape
 
 
 # calculate area of a rectangular object (A = h*l)
-def calc_area(height: float, length: float):
-    return height*length
+#def calc_area(height: float, length: float):
+    #return height*length
 
 
 # get user input (int)

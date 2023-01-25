@@ -3,13 +3,27 @@ import Wall
 import WallObject
 import Room
 import Paint
-import paintwall
 import Shape
+import math
 
 
 class MyTestCase(unittest.TestCase):
-    def test_calc_area(self):
-        self.assertEqual(paintwall.calc_area(10, 10), 100)
+    def test_rectangle_area(self):
+        shape = Shape.Rectangle()
+        shape.set_length(10.0)
+        shape.set_height(10.0)
+        self.assertEqual(shape.get_area(), 100)
+
+    def test_circle_area(self):
+        shape = Shape.Circle()
+        shape.set_diameter(2)
+        self.assertEqual(shape.get_area(), math.pi)
+
+    def test_triangle_area(self):
+        shape = Shape.Triangle()
+        shape.set_base(10.0)
+        shape.set_height(5.0)
+        self.assertEqual(shape.get_area(), 25.0)
 
     def test_add_wall(self):
         room = Room.Room(1)
