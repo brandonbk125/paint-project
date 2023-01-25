@@ -4,10 +4,12 @@ import Paint
 import Room
 
 
+# calculate area of a rectangular object (A = h*l)
 def calc_area(height: float, length: float):
     return height*length
 
 
+# get user input (int)
 def get_int(user_prompt: str):
     valid = False
     while not valid:
@@ -19,6 +21,7 @@ def get_int(user_prompt: str):
             input_error()
 
 
+# get user input (float)
 def get_float(user_prompt: str):
     valid = False
     while not valid:
@@ -30,6 +33,7 @@ def get_float(user_prompt: str):
             input_error()
 
 
+# get user input (string)
 def get_str(user_prompt: str):
     return input(user_prompt)
 
@@ -39,21 +43,25 @@ def input_error():
 
 
 def main():
-
-    # create a program to paint wall, measuring tape how much something measures
+    # create a program to calculate how much paint a user needs
 
     # define how much can be painted per litre of paint
     painted_wall_per_litre = 6.0
+
     # user inputs number of rooms
     num_rooms = get_int("Enter number of rooms to paint: ")
     rooms = []
-    # user inputs number of walls
+
+    # for each room
     for i in range(num_rooms):
-        # user inputs wall dimensions
+        # user inputs number of walls in each room
         num_walls = get_int("Number of walls in room " + str(i+1) + ": ")
         room = Room.Room(num_walls)
         rooms.append(room)
+
+        # for each wall
         for j in range(num_walls):
+            # user inputs wall dimensions
             wall_height = get_float("Enter height of wall " + str(j+1) + " (m): ")
             wall_length = get_float("Enter length of wall " + str(j+1) + " (m): ")
 
@@ -64,6 +72,7 @@ def main():
             # user inputs number of wall objects
             num_wall_obj = get_int("Enter number of wall objects on wall " + str(j+1) + " (windows, doors etc.): ")
 
+            # for each wall object
             for k in range(num_wall_obj):
                 # user inputs dimensions of wall objects
                 object_height = get_float("Enter object " + str(k+1) + " height (m): ")
@@ -87,6 +96,7 @@ def main():
             coats = get_int("Enter number of coats needed: ")
             wall.set_coats(coats)
 
+    # if there is 1 room or more to paint calculate cost
     if num_rooms > 0:
         total_cost = 0
         total_paint = 0
@@ -101,7 +111,8 @@ def main():
                 total_cost += paint_cost
 
         print("Total Paint needed (litres): " + str(round(total_paint, 3)))
-        print("Total Price: £" + str(round(total_cost,2)))
+        print("Total Price: £" + str(round(total_cost, 2)))
+    # if no rooms were entered do nothing
     else:
         pass
 
