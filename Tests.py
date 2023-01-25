@@ -1,0 +1,34 @@
+import unittest
+import Wall
+import WallObject
+import Room
+import paintwall
+
+
+
+class MyTestCase(unittest.TestCase):
+
+    def test_add_wall(self):
+        room = Room.Room(1)
+        wall = Wall.Wall(10, 10)
+        room.add_wall(wall)
+
+        self.assertEqual(room.get_walls()[0], wall)
+
+    def test_add_wall_obj(self):
+        wall = Wall.Wall(10, 10)
+        wall_obj = WallObject.WallObject(2, 2)
+
+        wall.add_wall_obj(wall_obj)
+        self.assertEqual(wall.get_wall_obj()[0], wall_obj)
+
+    def test_wall_paint_area(self):
+        wall = Wall.Wall(10, 10)
+        wall_obj = WallObject.WallObject(2, 2)
+
+        wall.add_wall_obj(wall_obj)
+        self.assertEqual(wall.get_paint_area(), 96)
+
+
+if __name__ == '__main__':
+    unittest.main()

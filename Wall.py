@@ -17,6 +17,10 @@ class Wall:
     def add_wall_obj(self, wall_object: WallObject):
         self._wall_objs.append(wall_object)
 
+    # get list of WallObjects on the Wall
+    def get_wall_obj(self):
+        return self._wall_objs
+
     # get area on Wall to be painted (discounting area of WallObjects)
     def get_paint_area(self):
         total_obstruction = 0
