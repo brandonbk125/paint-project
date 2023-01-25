@@ -5,8 +5,9 @@ import Room
 import paintwall
 
 
-
 class MyTestCase(unittest.TestCase):
+    def test_calc_area(self):
+        self.assertEqual(paintwall.calc_area(10, 10), 100)
 
     def test_add_wall(self):
         room = Room.Room(1)
