@@ -1,5 +1,3 @@
-
-
 # the Paint class holds information about the paint a user will use to paint a Wall
 class Paint:
     def __init__(self, colour: str, cost_per_litre: float):

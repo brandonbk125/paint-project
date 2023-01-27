@@ -66,7 +66,7 @@ def input_error():
 def main():
     # create a program to calculate how much paint a user needs
 
-    # define how much can be painted per litre of paint
+    # define how many m^2 can be painted per litre of paint
     painted_wall_per_litre = 6.0
 
     # user inputs number of rooms
