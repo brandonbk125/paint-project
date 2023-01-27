@@ -5,11 +5,6 @@ import Room
 import Shape
 
 
-# calculate area of a rectangular object (A = h*l)
-#def calc_area(height: float, length: float):
-    #return height*length
-
-
 # get user input (int)
 def get_int(user_prompt: str):
     valid = False
@@ -137,7 +132,7 @@ def main():
         print("Total Price: £" + str(round(total_cost, 2)))
     # if no rooms were entered do nothing
     else:
-        pass
+        print("No rooms entered!")
 
 
 if __name__ == '__main__':
