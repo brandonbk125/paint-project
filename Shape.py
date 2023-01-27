@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import math
-import paintwall
+from paintwall import get_float
 
 
 class Shape(ABC):
@@ -20,8 +20,8 @@ class Rectangle(Shape):
         return self._height * self._length
 
     def set_dimensions(self):
-        self._height = paintwall.get_float("Enter height of rectangle (m): ")
-        self._length = paintwall.get_float("Enter length of rectangle (m): ")
+        self._height = get_float("Enter height of rectangle (m): ")
+        self._length = get_float("Enter length of rectangle (m): ")
 
     def set_height(self, height: float):
         self._height = height
@@ -38,7 +38,7 @@ class Circle(Shape):
         return math.pi * math.pow(self._diameter/2, 2)
 
     def set_dimensions(self):
-        self._diameter = paintwall.get_float("Enter diameter of circle (m): ")
+        self._diameter = get_float("Enter diameter of circle (m): ")
 
     def set_diameter(self, diameter: float):
         self._diameter = diameter
@@ -53,8 +53,8 @@ class Triangle(Shape):
         return 0.5 * self._base * self._height
 
     def set_dimensions(self):
-        self._base = paintwall.get_float("Enter base of triangle (m): ")
-        self._height = paintwall.get_float("Enter height of triangle (m): ")
+        self._base = get_float("Enter base of triangle (m): ")
+        self._height = get_float("Enter height of triangle (m): ")
 
     def set_base(self, base: float):
         self._base = base
