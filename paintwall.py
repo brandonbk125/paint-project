@@ -34,6 +34,7 @@ def get_str(user_prompt: str):
     return input(user_prompt)
 
 
+# gets the shape of an object from the user
 def get_shape(user_prompt: str):
     valid = False
     shape = None
@@ -57,6 +58,7 @@ def get_shape(user_prompt: str):
             input_error()
 
 
+# throws this error message when the user enters an invalid input
 def input_error():
     print("Invalid Input")
 
